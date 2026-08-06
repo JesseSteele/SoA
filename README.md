@@ -6,7 +6,6 @@ So, you found an old PC that just won't play Fortnite or GTA VI. Maybe it's a Ma
 You've come to the right repo!
 
 ## On the network server machine:
-
 1. Get Arch installed with the drive ready
 - Install Arch (or Manjaro, shhhh)
 - Set up and format your drive to serve on the network, only these filesystems will work:
@@ -52,10 +51,7 @@ sudo ./enable-samba-wifi.sh
 - Look at the new network drive and admire your hard work
 - Imagine you are at an Internet cafe doing important things
 
-
-
 ## Technical Info
-
 - `install-samba-lan.sh` does it most of the work for you
   - Make sure that have your drive or partition to share all ready
     - It only works for NTFS, FAT32, ext4, and btrfs filesystems
