@@ -63,8 +63,7 @@ sudo ./enable-samba-wifi.sh
 - `enable-samba-wifi.sh` adds WiFi support after `install-samba-lan.sh`
   - Just run it and WiFi should work
 - `client-booster.md` has some extra commands to polish how the Sam drive appears
-  - It is unnecessary
-  - It is redundant and you may see the network machine twice with two names after running
+  - It is unnecessary, but can polishes file explorer use
   - It adds a firewall to your local machine with `ufw`, which you could just do yourself
   - It is only for Arch Linux machines
 

@@ -1,5 +1,5 @@
 # Redundant "help"
-*These could clean-up an Arch Linux client machine's interaction with the server, but it would be redundant*
+*These could clean-up an Arch Linux client machine's interaction with the server, but it isn't exactly necessary*
 
 ```console
 sudo /usr/bin/pacman -Syy --needed --noconfirm gvfs-smb avahi nss-mdns ufw && \
