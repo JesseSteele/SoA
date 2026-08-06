@@ -1,6 +1,6 @@
 # Settings files for Samba
+Drive="/dev/sde1"  # Can be /dev/sdxX or UUID=SOME-LONG-NUBMER or just the SOME-LONG-NUMBER for the UUID; all will work
+
+# Default user and pass, change if you feel the urge
 SamUser="samuser"
 SamPass="sam123"
-Drive="/dev/sde1"  # Can be /dev/sdxX or UUID=SOME-LONG-NUBMER or just the SOME-LONG-NUMBER for the UUID; all will work
-FStype="ntfs-3g"
-CharSet="nls=utf8"

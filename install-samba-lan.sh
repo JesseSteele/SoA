@@ -14,8 +14,7 @@ LoginRefFile="/etc/samba/login.txt"           # Login user and password are stor
 SamUser="samuser"
 SamPass="sam123"
 Drive="/dev/sde1"  # Can be /dev/sdxX or UUID=SOME-LONG-NUBMER or just the SOME-LONG-NUMBER for the UUID; all will work
-FStype="ntfs-3g"
-CharSet="nls=utf8"
+
 ## Override defaults with settings
 if [ -f "settings" ]; then
     /usr/bin/source settings

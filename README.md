@@ -30,7 +30,7 @@ nano settings
 ```
 
 - Must set: `Drive=`
-- May change: `
+- May change: `SamUser=` & `SamPass=`
 
 4. Install the Samba drive
 
