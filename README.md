@@ -47,9 +47,14 @@ sudo ./enable-samba-wifi.sh
 6. Done!
 - Get a cup of coffee (if your doctor allows)
 - Login with your user and password
+  - Find the machine or Sam server on the network in files or such
+  - Probably use "WORKGROUP" for the domain or workgroup login
+- Look at the new network drive and admire your hard work
 - Imagine you are at an Internet cafe doing important things
 
-Once you have everything set
+
+
+## Technical Info
 
 - `install-samba-lan.sh` does it most of the work for you
   - Make sure that have your drive or partition to share all ready
