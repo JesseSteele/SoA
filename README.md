@@ -59,9 +59,6 @@ sudo ./enable-samba-wifi.sh
       - Get these with `lsblk -f`
   - Network user and password login are already set to `samuser` and `sam123`
     - You can change these also in the `settings` file
-  - This only sets-up one network drive
-    - You can do more by duplicating the `[Sam]` block in `/etc/samba/smb.conf`
-      - If so, don't use `/srv/public`, but put each drive in a subdirectory there
   - This only enables physical LAN with ethernet cables
 - `enable-samba-wifi.sh` adds WiFi support after `install-samba-lan.sh`
   - Just run it and WiFi should work
@@ -70,3 +67,35 @@ sudo ./enable-samba-wifi.sh
   - It is redundant and you may see the network machine twice with two names after running
   - It adds a firewall to your local machine with `ufw`, which you could just do yourself
   - It is only for Arch Linux machines
+
+### More than one drive
+- This only sets-up one network drive by default
+- You can do more by duplicating the `[Sam]` block in `/etc/samba/smb.conf`
+  - If so, change `Sam` and `/srv/public/sam` to the new name you want
+
+```console
+sudo nano /etc/samba/smb.conf
+```
+
+**`/etc/samba/smb.conf`** second entry example:
+
+```
+[Second]
+   path = /srv/public/second
+   valid users = samuser    # This and everything else stays the same
+   writable = yes
+   browsable = yes
+   guest ok = no
+```
+
+```console
+sudo nano /etc/fstab
+```
+
+**`/etc/fstab`** entry examples:
+
+```
+UUID=50M3-NUM89-VERY-LONG /srv/public/second ext4 defaults 0 0 # ext4
+UUID=50M3-NUM89 /srv/public/second vfat defaults,iocharset=utf8,umask=000,uid=nobody,gid=nobody 0 0 # FAT32
+UUID=50M3NUM89 /srv/public/second ntfs-3g defaults,nls=utf8,umask=000,dmask=000,fmask=000,uid=nobody,gid=nobody 0 0 # NTFS
+```

@@ -114,20 +114,22 @@ Loopback="lo"
 /usr/bin/pacman -Syy --needed --noconfirm samba ntfs-3g avahi nss-mdns wsdd ufw
 
 # 3. Mount Drive
-/usr/bin/mkdir -p /srv/public
-## Mount drive as the /srv/public drive
+/usr/bin/mkdir -p /srv/public/sam
+## Mount drive as the /srv/public/sam drive
 if ! /usr/bin/grep -q "/srv/public" /etc/fstab; then
-    /usr/bin/echo "# Samba network Drive" >> /etc/fstab
-    /usr/bin/echo "UUID=$DriveUUID /srv/public $FStype $MountOpts 0 0" >> /etc/fstab
-#   /usr/bin/echo "/dev/sde1 /srv/public ntfs-3g defaults,nls=utf8,umask=000,dmask=000,fmask=000,uid=nobody,gid=nobody 0 0" >> /etc/fstab  # /dev/sd... method
-#   /usr/bin/echo "UUID=50M3-NUM89 /srv/public ntfs-3g defaults,nls=utf8,umask=000,dmask=000,fmask=000,uid=nobody,gid=nobody 0 0" >> /etc/fstab  # UUID method
-#   /usr/bin/echo "UUID=50M3-NUM89 /srv/public vfat defaults,iocharset=utf8,umask=000,uid=nobody,gid=nobody 0 0" >> /etc/fstab  # UUID method for FAT32
-#   /usr/bin/echo "/dev/sde1 /srv/public vfat defaults,iocharset=utf8,umask=000,uid=nobody,gid=nobody 0 0" >> /etc/fstab  # /dev/sd... method for FAT32
+    /usr/bin/echo "# Samba network drives" >> /etc/fstab
+    /usr/bin/echo "UUID=$DriveUUID /srv/public/sam $FStype $MountOpts 0 0" >> /etc/fstab
+#   /usr/bin/echo "/dev/sde1 /srv/public/sam ntfs-3g defaults,nls=utf8,umask=000,dmask=000,fmask=000,uid=nobody,gid=nobody 0 0" >> /etc/fstab  # /dev/sd... method for NTFS
+#   /usr/bin/echo "UUID=50M3NUM89 /srv/public/sam ntfs-3g defaults,nls=utf8,umask=000,dmask=000,fmask=000,uid=nobody,gid=nobody 0 0" >> /etc/fstab  # UUID method for NTFS
+#   /usr/bin/echo "UUID=50M3-NUM89 /srv/public/sam vfat defaults,iocharset=utf8,umask=000,uid=nobody,gid=nobody 0 0" >> /etc/fstab  # UUID method for FAT32
+#   /usr/bin/echo "/dev/sde1 /srv/public/sam vfat defaults,iocharset=utf8,umask=000,uid=nobody,gid=nobody 0 0" >> /etc/fstab  # /dev/sd... method for FAT32
+#   /usr/bin/echo "UUID=50M3-NUM89-VERY-LONG /srv/public/sam ext4 defaults 0 0" >> /etc/fstab  # UUID method for ext4
+#   /usr/bin/echo "/dev/sde1 /srv/public/sam ext4 defaults 0 0" >> /etc/fstab  # /dev/sd... method for ext4
 fi
 /usr/bin/mount -a
 ## Ownership
 /usr/bin/chown -R nobody:nobody /srv/public
-/usr/bin/chmod 777 /srv/public
+/usr/bin/chmod -R 777 /srv/public
 
 # 4. User and Password Management
 ## Add the Linux user
@@ -159,7 +161,7 @@ fi
    $BindLogic
 
 [Sam]
-   path = /srv/public
+   path = /srv/public/sam
    valid users = $SamUser
    writable = yes
    browsable = yes
